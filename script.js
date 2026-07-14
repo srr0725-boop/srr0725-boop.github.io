@@ -1,60 +1,74 @@
-const menu = document.querySelector(".menu");
-const game = document.getElementById("game");
-const board = document.getElementById("board");
-const dice = document.getElementById("dice");
-const turn = document.getElementById("turn");
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
-let currentPlayer = 0;
-const players = [
-    "👑 Raja",
-    "🟢 Mantri",
-    "🟡 Chor",
-    "🔵 Sipahi"
-];
+let score = 0;
 
-function startGame(){
-    menu.classList.add("hidden");
-    game.classList.remove("hidden");
-    createBoard();
-    turn.innerHTML = players[currentPlayer] + " Turn";
+const fruits = ["🍎","🍊","🍋","🍇","🍉","🍓"];
+
+let fruit = {
+    x: 200,
+    y: 40,
+    size: 40,
+    speed: 2,
+    emoji: "🍎"
+};
+
+function randomFruit(){
+    return fruits[Math.floor(Math.random()*fruits.length)];
 }
 
-function createBoard(){
+function startGame(){
+    score = 0;
+    document.getElementById("score").innerHTML = "Score : 0";
 
-    board.innerHTML="";
+    fruit.x = 200;
+    fruit.y = 40;
+    fruit.emoji = randomFruit();
 
-    for(let i=0;i<225;i++){
+    requestAnimationFrame(gameLoop);
+}
 
-        const cell=document.createElement("div");
-        cell.className="cell";
+canvas.addEventListener("click",function(e){
 
-        if(i<36) cell.classList.add("red");
-        else if(i<72) cell.classList.add("green");
-        else if(i<108) cell.classList.add("yellow");
-        else if(i<144) cell.classList.add("blue");
+    const rect = canvas.getBoundingClientRect();
 
-        if(i===112){
-            cell.className="cell center";
-            cell.innerHTML="🏆";
-        }
+    fruit.x = e.clientX - rect.left;
 
-        board.appendChild(cell);
+});
+
+function drawFruit(){
+
+    ctx.font = fruit.size + "px Arial";
+    ctx.fillText(fruit.emoji,fruit.x,fruit.y);
+
+}
+
+function update(){
+
+    fruit.y += fruit.speed;
+
+    if(fruit.y > canvas.height-30){
+
+        score++;
+
+        document.getElementById("score").innerHTML="Score : "+score;
+
+        fruit.y = 40;
+        fruit.x = Math.random()*340+20;
+        fruit.emoji = randomFruit();
 
     }
 
 }
 
-function rollDice(){
+function gameLoop(){
 
-    let value=Math.floor(Math.random()*6)+1;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    dice.innerHTML=value;
+    drawFruit();
 
-    currentPlayer++;
+    update();
 
-    if(currentPlayer>3)
-        currentPlayer=0;
-
-    turn.innerHTML=players[currentPlayer]+" Turn";
+    requestAnimationFrame(gameLoop);
 
 }
