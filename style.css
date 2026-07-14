@@ -2,108 +2,47 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    background:#0f172a;
-    color:#fff;
+    background:#1d3557;
+    color:white;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
     min-height:100vh;
 }
 
-.hidden{
-    display:none;
+h1{
+    margin:15px;
+    color:#ffd166;
 }
 
-.menu{
-    text-align:center;
+#score{
+    font-size:22px;
+    margin-bottom:15px;
 }
 
-.menu h1{
-    font-size:38px;
-    margin-bottom:30px;
-    color:#FFD700;
-}
-
-.menu button{
-    width:220px;
-    padding:15px;
-    margin:10px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:#fff;
-    font-size:20px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.menu button:hover{
-    background:#1d4ed8;
-    transform:scale(1.05);
-}
-
-.top{
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-#dice{
-    width:80px;
-    height:80px;
-    background:#fff;
-    color:#000;
-    font-size:40px;
+#gameCanvas{
+    background:#f1faee;
+    border:5px solid #333;
     border-radius:15px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    touch-action:none;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:10px;
+    background:#06d6a0;
+    color:white;
     cursor:pointer;
 }
 
-#turn{
-    font-size:24px;
-    color:#FFD700;
-}
-
-#board{
-    width:600px;
-    height:600px;
-    background:#ffffff;
-    border:8px solid #222;
-    border-radius:20px;
-
-    display:grid;
-    grid-template-columns:repeat(15,1fr);
-    grid-template-rows:repeat(15,1fr);
-}
-
-.cell{
-    border:1px solid #ddd;
-}
-
-.red{
-    background:#ff4d4d;
-}
-
-.green{
-    background:#22c55e;
-}
-
-.yellow{
-    background:#facc15;
-}
-
-.blue{
-    background:#3b82f6;
-}
-
-.center{
-    background:#6d28d9;
+button:hover{
+    background:#04b383;
 }
