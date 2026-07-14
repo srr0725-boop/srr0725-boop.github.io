@@ -3,43 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raja Mantri Chor Sipahi</title>
+<title>Fruit Drop</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="menu">
+<h1>🍉 Fruit Drop</h1>
 
-<h1>👑 Raja Mantri Chor Sipahi</h1>
+<div id="score">Score : 0</div>
 
-<button onclick="startGame()">▶ Play</button>
-<button>⚙ Settings</button>
-<button>ℹ About</button>
+<canvas id="gameCanvas" width="400" height="650"></canvas>
 
-</div>
-
-<div id="game" class="hidden">
-
-<div class="top">
-
-<div id="dice" onclick="rollDice()">
-🎲
-</div>
-
-<div id="turn">
-Player 1 Turn
-</div>
-
-</div>
-
-<div id="board">
-
-<!-- Board CSS से बनेगा -->
-
-</div>
-
-</div>
+<button onclick="startGame()">▶ Start Game</button>
 
 <script src="script.js"></script>
 
